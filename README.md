@@ -81,7 +81,11 @@ For example, if the workload is 4e6, and you can get the parallelism is:
 
 
 $$
-For \ this \ figure ,\  For \ workload \ 4e6, \ you \ can \ find \ the \ parallelism \lceil 10.64 \rceil = 11,\\ and \ d_{nearest} = \lvert 11 - 10 \rvert = 1 \ for \ any \ \alpha \geq 1, \ paralllism = 11 \ is \ recommended, \ otherwise, \ DS2 \ is \ triggered.
+For \ this \ figure ,\  For \ workload \ 4e6, \ you \ can \ find \ the \ parallelism \lceil 10.64 \rceil = 11,\ and \ d_{nearest} = \lvert 11 - 10 \rvert = 1 \ for \ any \ \alpha \geq 1,
+$$
+
+$$
+\ paralllism = 11 \ is \ recommended, \ otherwise, \ DS2 \ is \ triggered.
 $$
 
 And ContTune works iteratively for each operator. 
