@@ -4,7 +4,7 @@ ContTune, a continuous tuning system for elastic stream processing using Big-sma
 
 ContTune is simple and useful! And we faithfully recommend you to read DS2[^1].
 
-ContTune has been deployed on Tencent's distributed stream data processing system _Oceanus_ and serves as the only parallelism tuning system.  The codes of Section **Implementation** (containing **controller** and **Databases**) is not open source, but these codes are only engineering realization, and we give our environment codes of Big-small algorithm and conservative Bayesian Optimization (CBO). 
+ContTune has been deployed on Tencent's distributed stream data processing system _Oceanus_ and serves as the only parallelism tuning system.  The codes of Section **Implementation** (containing **controller** and **Databases**) is not open source, but these codes are only engineering realization, and we give our codes of Big-small algorithm and conservative Bayesian Optimization (CBO). 
 
 ## Requirements
 
@@ -19,7 +19,7 @@ ContTune has been deployed on Tencent's distributed stream data processing syste
 
 Historical observations contain pairs of (parallelism, processing ability), where parallelism can be obtained on Flink and processing ability can be obtained on Flink after deploying **Codes of Getting Metrics**.
 
-Here is historical observations of Nexmark Q1 operator: 'Mapper' from database:
+Here is an example historical observations of Nexmark Q1 operator: 'Mapper' in database:
 
 | Parallelism | 1st PA      | 2nd PA      | 3rd PA      | 4th PA      | 5th PA      | mean-reversion PA                                            |
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ------------------------------------------------------------ |
@@ -75,11 +75,13 @@ And for the tuned job, ContTune first uses the Big-small algorithm to make it no
 
 And now for any upstream rate, you can use the acquisition function to find the best parallelism by ContTune.
 
-For example, if the upstream rate now is 4e6, and you can get the parallelism is:
+For example, if the workload is 4e6, and you can get the parallelism is:
 
 ![image-20230301215919441](https://github.com/ljqcodelove/ContTune/raw/main/figures/readme2.png)
+
+
 $$
-\lceil 10.64 \rceil = 11, and \ d_{nearest} = \lvert 11 - 10 \rvert = 1 \ for \ any \ \alpha \geq 1, \ paralllism = 11 \ is \ recommended, \ otherwise, \ DS2 \ is \ triggered.
+For \ this \ figure ,\  For \ workload \ 4e6, \ you \ can \ find \ the \ parallelism \lceil 10.64 \rceil = 11,\\ and \ d_{nearest} = \lvert 11 - 10 \rvert = 1 \ for \ any \ \alpha \geq 1, \ paralllism = 11 \ is \ recommended, \ otherwise, \ DS2 \ is \ triggered.
 $$
 And ContTune works iteratively for each operator. 
 
