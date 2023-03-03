@@ -83,6 +83,7 @@ For example, if the workload is 4e6, and you can get the parallelism is:
 $$
 For \ this \ figure ,\  For \ workload \ 4e6, \ you \ can \ find \ the \ parallelism \lceil 10.64 \rceil = 11,\\ and \ d_{nearest} = \lvert 11 - 10 \rvert = 1 \ for \ any \ \alpha \geq 1, \ paralllism = 11 \ is \ recommended, \ otherwise, \ DS2 \ is \ triggered.
 $$
+
 And ContTune works iteratively for each operator. 
 
 ## Codes of Getting Metrics
@@ -98,9 +99,11 @@ About useful time if you use the Flink version < 1.13, you can add the code to g
 Because, ContTune first uses Big-small to make job non-backpressure, so ContTune uses numRecordsInPerSecond in [Flink Mertics](https://nightlies.apache.org/flink/flink-docs-release-1.13/docs/ops/metrics/ ) of non-backpressure jobs.
 
 ContTune gets the processing ability is:
+
 $$
 \frac{numRecordsInPerSecond}{useful time}.
 $$
+
 But if you have deployed the DS2[^1], by running DS2[^1] you will get the real processing ability of operator like this:
 
 ![image-20230301215919441](https://github.com/ljqcodelove/ContTune/raw/main/figures/readme3.png)
