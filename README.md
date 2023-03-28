@@ -123,7 +123,7 @@ The Big-small algorithm code is very simple and is the same as Algorithm 1 in th
 The code of our Gaussian Process is in:
 
 ```
-.\code\GOofContTune.py
+.\code\GPofContTune.py
 ```
 
 The code is simple and useful:
