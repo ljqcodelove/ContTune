@@ -1,5 +1,8 @@
 # Real Jobs
 
+In our Oceanus platform, there is a UI bug that the TPS of source is 0, because the TPS here is the input TPS. 
+But in databases, we can get the both TPS of input and output.
+
 ![VideoStreaming](https://github.com/ljqcodelove/ContTune/raw/main/benchmark/RealJobs/72582_Videostreaming_488Cores.png)
 
 A job for video streaming in Tencent Meeting.
