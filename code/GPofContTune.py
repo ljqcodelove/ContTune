@@ -11,7 +11,7 @@ class GPR:
     def __init__(self, optimize=True):
         self.is_fit = False
         self.train_X, self.train_y = None, None
-        self.params = {"l": 4.37, "sigma_f": 1000000}
+        self.params = {"l": 2.5, "sigma_f": 1000000}
         self.optimize = optimize
 
     def fit(self, X, y):
@@ -50,7 +50,7 @@ class GPR:
 
         if self.optimize:
             res = minimize(negative_log_likelihood_loss, [self.params["l"], self.params["sigma_f"]],
-                   bounds=((1e-5, 1e5), (1e-5, 5e5)),
+                   bounds=((1e-5, 1e5), (1e-5, 1e5)),
                    method='L-BFGS-B')
             self.params["l"], self.params["sigma_f"] = res.x[0], res.x[1]
 
@@ -90,8 +90,8 @@ def GP(mp={}):
     train_X = np.array(arr).reshape(-1, 1)
     train_y = (np.array(brr).reshape(-1, 1) + np.random.normal(0, 1e-4, size=np.asarray(train_X).shape)).tolist()
 
-    # you need to change 27 to the upper bound parallelism of this operator
-    test_X = np.arange(0, 27, 1).reshape(-1, 1)
+    # you need to change 26 to the maximal bound parallelism of this operator, in ContTune, it is given by the Big-small Algorithm
+    test_X = np.arange(0, 26, 1).reshape(-1, 1)
 
     gpr = GPR()
     gpr.fit(train_X, train_y)
@@ -106,4 +106,7 @@ def GP(mp={}):
     plt.plot(test_X, test_y, label="predict")
     plt.scatter(train_X, train_y, label="train", c="red", marker="x")
     plt.legend()
+    plt.ylabel('Processing ability')
+    plt.xlabel('Level of parallelism')
+    # plt.savefig("./RepeatedExperiment3.pdf", format='pdf', transparent=True)
     plt.show()
