@@ -71,13 +71,13 @@ mp[26] = 7476391.84
 
 And for the tuned job, ContTune first uses the Big-small algorithm to make it non-backpressure, and get the surrogate model like this:
 
-![image-20230301215919441](https://github.com/ljqcodelove/ContTune/raw/main/figures/readme1.png)
+![image-20230301215919441](https://github.com/ljqcodelove/ContTune/blob/main/figures/readme1.png)
 
 And now for any upstream rate, you can use the acquisition function to find the best parallelism by ContTune.
 
 For example, if the workload is 4e6, and you can get the parallelism is:
 
-![image-20230301215919441](https://github.com/ljqcodelove/ContTune/raw/main/figures/readme2.png)
+![image-20230301215919441](https://github.com/ljqcodelove/ContTune/blob/main/figures/readme2.png)
 
 
 $$
@@ -110,7 +110,7 @@ $$
 
 But if you have deployed the DS2[^1], by running DS2[^1] you will get the real processing ability of operator like this:
 
-![image-20230301215919441](https://github.com/ljqcodelove/ContTune/raw/main/figures/readme3.png)
+![image-20230301215919441](https://github.com/ljqcodelove/ContTune/blob/main/figures/readme3.png)
 
 , and you can use the processing ability given by DS2, too.
 
